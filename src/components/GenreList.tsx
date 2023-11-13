@@ -1,38 +1,38 @@
 import { Genre } from "../hooks/useGenres";
 import useData from "../hooks/useData";
-import {
-  Button,
-  HStack,
-  Image,
-  List,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Button, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/umages-url";
+
 interface Props {
-  onselectedgenre: (genre: Genre) => void;
+  onSelectedGenre: (genre: Genre) => void; // Updated the naming convention to camelCase
+  selectedgenre: Genre | null; // Updated the naming convention to camelCase
 }
-const GenreList = ({ onselectedgenre }: Props) => {
+
+const GenreList = ({ onSelectedGenre, selectedgenre }: Props) => {
   const { data, isLoading } = useData<Genre>("/genres");
-  if (isLoading) return <Spinner />;
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
       <List>
-        {data.map((gener) => (
-          <ListItem key={gener.id} paddingY={"5px"}>
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY={"5px"}>
             <HStack>
               <Image
                 boxSize={"32px"}
                 borderRadius={8}
-                src={getCroppedImageUrl(gener.image_background)}
+                src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
-                onClick={() => onselectedgenre(gener)}
+                fontWeight={genre.id === selectedgenre?.id ? "bold" : "normal"}
+                onClick={() => onSelectedGenre(genre)} // Updated the naming convention to camelCase
                 fontSize={"lg"}
                 variant={"link"}
               >
-                {gener.name}
+                {genre.name}
               </Button>
             </HStack>
           </ListItem>

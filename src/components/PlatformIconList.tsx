@@ -1,5 +1,5 @@
 import React from "react";
-import { platform } from "../hooks/useGames";
+import { Platform } from "../hooks/useGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -14,7 +14,7 @@ import {SiNintendo} from 'react-icons/si'
 import {BsGlobe} from 'react-icons/bs'
 import { IconType } from "react-icons";
 interface Props {
-  platform: platform[];
+  platform: Platform[];
 }
 const PlatformIconList = ({ platform }: Props) => {
     const iconMap :{[key:string]:IconType}={
