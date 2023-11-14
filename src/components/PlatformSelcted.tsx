@@ -1,5 +1,4 @@
 import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
-import React from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import usePlatform from '../hooks/usePlatforms'; // Updated the import to usePlatform
 import { Platform } from '../hooks/useGames';
@@ -27,4 +26,4 @@ if(error) return null;
     );
 }
 
-export default PlatformSelected; // Updated the component name to PlatformSelected
+export default PlatformSelected; 
